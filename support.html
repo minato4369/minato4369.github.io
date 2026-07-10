@@ -13,6 +13,7 @@
     --surface: #f5f6f8;
     --border: #e2e4e8;
     --link: #1f6feb;
+    --accent: #ff6b35;
   }
   * { box-sizing: border-box; }
   body {
@@ -22,8 +23,8 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
   }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
-  header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 24px 96px; }
+  header { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
   h1 { font-size: 1.9rem; margin: 0 0 8px; letter-spacing: -0.01em; }
   .meta { color: var(--muted); font-size: 0.95rem; }
   h2 { font-size: 1.25rem; margin: 40px 0 12px; }
@@ -47,6 +48,30 @@
     color: var(--muted);
     font-size: 0.85rem;
   }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .lang-switch button {
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .lang-switch button.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #1a1a1a;
+  }
+  .lang-block { display: none; }
+  .lang-block.active { display: block; }
   @media (prefers-color-scheme: dark) {
     :root {
       color-scheme: dark;
@@ -57,41 +82,194 @@
       --border: #2c2d31;
       --link: #6ea8fe;
     }
+    .lang-switch button.active { color: #121212; }
   }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <h1>Support</h1>
-      <div class="meta">Flash Round Chaos</div>
-    </header>
-
-    <p>Need help with Flash Round Chaos, found a bug, or have a suggestion for a new word pack or Chaos event? We'd love to hear from you.</p>
-
-    <h2>Frequently Asked Questions</h2>
-
-    <p><strong>How many players do I need?</strong><br>
-    A minimum of 3. With exactly 3 players, the game switches to a rotating duel mode where everyone takes turns describing.</p>
-
-    <p><strong>What are Chaos dice?</strong><br>
-    Random events that can change the current turn's scoring, timer, or describing style. You can enable or disable each one from the settings before starting a game.</p>
-
-    <p><strong>I bought a word pack but it doesn't show as unlocked. What do I do?</strong><br>
-    Try the "Restore purchases" button on the pack selection screen. If that doesn't help, contact us with your purchase details below.</p>
-
-    <p><strong>Can I create my own word list?</strong><br>
-    Yes — "My Pack" on the pack selection screen lets you write your own custom words, available with the full‑game unlock.</p>
-
-    <h2>Contact Us</h2>
-    <div class="contact">
-      <p style="margin:0">For bug reports, purchase issues, or any other question:</p>
-      <p style="margin:6px 0 0"><a href="mailto:minato4369.dev@gmail.com">minato4369.dev@gmail.com</a></p>
+    <div class="lang-switch" id="langSwitch">
+      <button data-lang="en">English</button>
+      <button data-lang="fr">Français</button>
+      <button data-lang="de">Deutsch</button>
+      <button data-lang="es">Español</button>
+      <button data-lang="it">Italiano</button>
+      <button data-lang="pt">Português</button>
     </div>
 
-    <footer>
-      Flash Round Chaos — Support · See also our <a href="./flash-round-chaos-privacy.html">Privacy Policy</a>
-    </footer>
+    <!-- English -->
+    <div class="lang-block" data-lang="en">
+      <header>
+        <h1>Support</h1>
+        <div class="meta">Flash Round Chaos</div>
+      </header>
+      <p>Need help with Flash Round Chaos, found a bug, or have a suggestion for a new word pack or Chaos event? We'd love to hear from you.</p>
+      <h2>Frequently Asked Questions</h2>
+      <p><strong>How many players do I need?</strong><br>
+      A minimum of 3. With exactly 3 players, the game switches to a rotating duel mode where everyone takes turns describing.</p>
+      <p><strong>What are Chaos dice?</strong><br>
+      Random events that can change the current turn's scoring, timer, or describing style. You can enable or disable each one from the settings before starting a game.</p>
+      <p><strong>I bought a word pack but it doesn't show as unlocked. What do I do?</strong><br>
+      Try the "Restore purchases" button on the pack selection screen. If that doesn't help, contact us with your purchase details below.</p>
+      <p><strong>Can I create my own word list?</strong><br>
+      Yes — "My Pack" on the pack selection screen lets you write your own custom words, available with the full‑game unlock.</p>
+      <h2>Contact Us</h2>
+      <div class="contact">
+        <p style="margin:0">For bug reports, purchase issues, or any other question:</p>
+        <p style="margin:6px 0 0"><a href="mailto:minato4369.dev@gmail.com">minato4369.dev@gmail.com</a></p>
+      </div>
+      <footer>Flash Round Chaos — Support · See also our <a href="./flash-round-chaos-privacy.html">Privacy Policy</a></footer>
+    </div>
+
+    <!-- Français -->
+    <div class="lang-block" data-lang="fr">
+      <header>
+        <h1>Assistance</h1>
+        <div class="meta">Flash Round Chaos</div>
+      </header>
+      <p>Besoin d'aide avec Flash Round Chaos, tu as trouvé un bug, ou tu as une suggestion pour un nouveau pack de mots ou un événement Chaos ? On serait ravis d'avoir de tes nouvelles.</p>
+      <h2>Questions fréquentes</h2>
+      <p><strong>Combien de joueurs faut-il ?</strong><br>
+      Un minimum de 3. Avec exactement 3 joueurs, le jeu passe en mode duel tournant où chacun décrit à son tour.</p>
+      <p><strong>Que sont les dés Chaos ?</strong><br>
+      Des événements aléatoires qui peuvent changer le score, le chrono ou le style de description du tour en cours. Tu peux activer ou désactiver chacun depuis les réglages avant de lancer une partie.</p>
+      <p><strong>J'ai acheté un pack mais il n'apparaît pas débloqué, que faire ?</strong><br>
+      Essaie le bouton "Restaurer les achats" sur l'écran de sélection des packs. Si ça ne résout pas le problème, contacte-nous avec les détails de ton achat ci-dessous.</p>
+      <p><strong>Puis-je créer ma propre liste de mots ?</strong><br>
+      Oui — "Mon Pack" sur l'écran de sélection des packs te permet d'écrire tes propres mots personnalisés, disponible avec le déblocage du jeu complet.</p>
+      <h2>Nous contacter</h2>
+      <div class="contact">
+        <p style="margin:0">Pour signaler un bug, un problème d'achat, ou toute autre question :</p>
+        <p style="margin:6px 0 0"><a href="mailto:minato4369.dev@gmail.com">minato4369.dev@gmail.com</a></p>
+      </div>
+      <footer>Flash Round Chaos — Assistance · Voir aussi notre <a href="./flash-round-chaos-privacy.html">Politique de confidentialité</a></footer>
+    </div>
+
+    <!-- Deutsch -->
+    <div class="lang-block" data-lang="de">
+      <header>
+        <h1>Support</h1>
+        <div class="meta">Flash Round Chaos</div>
+      </header>
+      <p>Brauchst du Hilfe mit Flash Round Chaos, hast du einen Fehler gefunden oder einen Vorschlag für ein neues Wortpaket oder ein Chaos-Ereignis? Wir freuen uns, von dir zu hören.</p>
+      <h2>Häufig gestellte Fragen</h2>
+      <p><strong>Wie viele Spieler brauche ich?</strong><br>
+      Mindestens 3. Bei genau 3 Spielern wechselt das Spiel in den rotierenden Duell-Modus, bei dem jeder abwechselnd beschreibt.</p>
+      <p><strong>Was sind Chaos-Würfel?</strong><br>
+      Zufällige Ereignisse, die die Punktzahl, den Timer oder den Beschreibungsstil des aktuellen Zugs verändern können. Du kannst jedes davon in den Einstellungen vor Spielbeginn aktivieren oder deaktivieren.</p>
+      <p><strong>Ich habe ein Paket gekauft, aber es ist nicht freigeschaltet. Was tun?</strong><br>
+      Versuche die Schaltfläche "Käufe wiederherstellen" auf dem Paketauswahlbildschirm. Falls das nicht hilft, kontaktiere uns unten mit deinen Kaufdetails.</p>
+      <p><strong>Kann ich meine eigene Wortliste erstellen?</strong><br>
+      Ja — "Mein Paket" auf dem Paketauswahlbildschirm lässt dich eigene Wörter schreiben, verfügbar mit der Komplettspiel-Freischaltung.</p>
+      <h2>Kontakt</h2>
+      <div class="contact">
+        <p style="margin:0">Für Fehlermeldungen, Kaufprobleme oder sonstige Fragen:</p>
+        <p style="margin:6px 0 0"><a href="mailto:minato4369.dev@gmail.com">minato4369.dev@gmail.com</a></p>
+      </div>
+      <footer>Flash Round Chaos — Support · Siehe auch unsere <a href="./flash-round-chaos-privacy.html">Datenschutzrichtlinie</a></footer>
+    </div>
+
+    <!-- Español -->
+    <div class="lang-block" data-lang="es">
+      <header>
+        <h1>Soporte</h1>
+        <div class="meta">Flash Round Chaos</div>
+      </header>
+      <p>¿Necesitas ayuda con Flash Round Chaos, encontraste un error o tienes una sugerencia para un nuevo pack de palabras o evento Caos? Nos encantaría saber de ti.</p>
+      <h2>Preguntas frecuentes</h2>
+      <p><strong>¿Cuántos jugadores necesito?</strong><br>
+      Un mínimo de 3. Con exactamente 3 jugadores, el juego cambia a modo duelo rotativo donde todos describen por turnos.</p>
+      <p><strong>¿Qué son los dados Caos?</strong><br>
+      Eventos aleatorios que pueden cambiar la puntuación, el tiempo o el estilo de descripción del turno actual. Puedes activar o desactivar cada uno desde los ajustes antes de empezar una partida.</p>
+      <p><strong>Compré un pack pero no aparece desbloqueado, ¿qué hago?</strong><br>
+      Prueba el botón "Restaurar compras" en la pantalla de selección de packs. Si eso no lo soluciona, contáctanos abajo con los detalles de tu compra.</p>
+      <p><strong>¿Puedo crear mi propia lista de palabras?</strong><br>
+      Sí — "Mi Pack" en la pantalla de selección de packs te permite escribir tus propias palabras personalizadas, disponible con el desbloqueo del juego completo.</p>
+      <h2>Contáctanos</h2>
+      <div class="contact">
+        <p style="margin:0">Para informar errores, problemas de compra o cualquier otra pregunta:</p>
+        <p style="margin:6px 0 0"><a href="mailto:minato4369.dev@gmail.com">minato4369.dev@gmail.com</a></p>
+      </div>
+      <footer>Flash Round Chaos — Soporte · Consulta también nuestra <a href="./flash-round-chaos-privacy.html">Política de privacidad</a></footer>
+    </div>
+
+    <!-- Italiano -->
+    <div class="lang-block" data-lang="it">
+      <header>
+        <h1>Assistenza</h1>
+        <div class="meta">Flash Round Chaos</div>
+      </header>
+      <p>Hai bisogno di aiuto con Flash Round Chaos, hai trovato un bug o hai un suggerimento per un nuovo pacchetto di parole o un evento Caos? Ci farebbe piacere sentirti.</p>
+      <h2>Domande frequenti</h2>
+      <p><strong>Quanti giocatori servono?</strong><br>
+      Un minimo di 3. Con esattamente 3 giocatori, il gioco passa alla modalità duello a rotazione in cui ognuno descrive a turno.</p>
+      <p><strong>Cosa sono i dadi Caos?</strong><br>
+      Eventi casuali che possono cambiare il punteggio, il tempo o lo stile di descrizione del turno in corso. Puoi attivare o disattivare ciascuno dalle impostazioni prima di iniziare una partita.</p>
+      <p><strong>Ho acquistato un pacchetto ma non risulta sbloccato, cosa faccio?</strong><br>
+      Prova il pulsante "Ripristina acquisti" nella schermata di selezione dei pacchetti. Se non risolve il problema, contattaci qui sotto con i dettagli del tuo acquisto.</p>
+      <p><strong>Posso creare la mia lista di parole personalizzata?</strong><br>
+      Sì — "Il Mio Pacchetto" nella schermata di selezione ti permette di scrivere parole personalizzate, disponibile con lo sblocco del gioco completo.</p>
+      <h2>Contattaci</h2>
+      <div class="contact">
+        <p style="margin:0">Per segnalazioni di bug, problemi di acquisto o qualsiasi altra domanda:</p>
+        <p style="margin:6px 0 0"><a href="mailto:minato4369.dev@gmail.com">minato4369.dev@gmail.com</a></p>
+      </div>
+      <footer>Flash Round Chaos — Assistenza · Vedi anche la nostra <a href="./flash-round-chaos-privacy.html">Informativa sulla privacy</a></footer>
+    </div>
+
+    <!-- Português -->
+    <div class="lang-block" data-lang="pt">
+      <header>
+        <h1>Suporte</h1>
+        <div class="meta">Flash Round Chaos</div>
+      </header>
+      <p>Precisas de ajuda com o Flash Round Chaos, encontraste um erro ou tens uma sugestão para um novo pacote de palavras ou evento Caos? Adorávamos ouvir-te.</p>
+      <h2>Perguntas frequentes</h2>
+      <p><strong>Quantos jogadores preciso?</strong><br>
+      Um mínimo de 3. Com exatamente 3 jogadores, o jogo passa para o modo duelo rotativo em que cada um descreve à vez.</p>
+      <p><strong>O que são os dados Caos?</strong><br>
+      Eventos aleatórios que podem alterar a pontuação, o tempo ou o estilo de descrição da ronda atual. Podes ativar ou desativar cada um nas definições antes de iniciares um jogo.</p>
+      <p><strong>Comprei um pacote mas não aparece desbloqueado, o que faço?</strong><br>
+      Experimenta o botão "Restaurar compras" no ecrã de seleção de pacotes. Se isso não resolver, contacta-nos abaixo com os detalhes da tua compra.</p>
+      <p><strong>Posso criar a minha própria lista de palavras?</strong><br>
+      Sim — "O Meu Pacote" no ecrã de seleção de pacotes permite-te escrever palavras personalizadas, disponível com o desbloqueio do jogo completo.</p>
+      <h2>Contacta-nos</h2>
+      <div class="contact">
+        <p style="margin:0">Para reportar erros, problemas de compra ou qualquer outra questão:</p>
+        <p style="margin:6px 0 0"><a href="mailto:minato4369.dev@gmail.com">minato4369.dev@gmail.com</a></p>
+      </div>
+      <footer>Flash Round Chaos — Suporte · Consulta também a nossa <a href="./flash-round-chaos-privacy.html">Política de privacidade</a></footer>
+    </div>
   </div>
+
+  <script>
+    (function () {
+      var supported = ['en', 'fr', 'de', 'es', 'it', 'pt'];
+      var blocks = document.querySelectorAll('.lang-block');
+      var buttons = document.querySelectorAll('.lang-switch button');
+
+      function activate(lang) {
+        if (supported.indexOf(lang) === -1) lang = 'en';
+        blocks.forEach(function (b) {
+          b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+        });
+        buttons.forEach(function (btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+        try { localStorage.setItem('frc-support-lang', lang); } catch (e) {}
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          activate(btn.getAttribute('data-lang'));
+        });
+      });
+
+      var saved = null;
+      try { saved = localStorage.getItem('frc-support-lang'); } catch (e) {}
+      var browserLang = (navigator.language || 'en').slice(0, 2);
+      activate(saved || browserLang);
+    })();
+  </script>
 </body>
 </html>
